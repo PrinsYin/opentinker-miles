@@ -12,9 +12,9 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 cd "$PROJECT_DIR"
 
 REGISTRY="us-west1-docker.pkg.dev/devv-404803/gmi-test-repo"
-IMAGE_NAME="opentinker-miles"
-TAG="${TAG:-latest}"
-FULL_IMAGE="${REGISTRY}/${IMAGE_NAME}:${TAG}"
+IMAGE_NAME="otm"
+TAG="dev"
+FULL_IMAGE="${IMAGE_NAME}:${TAG}"
 
 echo "=== Building OpenTinker-Miles Image ==="
 echo "  Project: ${PROJECT_DIR}"

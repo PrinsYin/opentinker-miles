@@ -11,7 +11,7 @@
 #   docker build -t us-west1-docker.pkg.dev/devv-404803/gmi-test-repo/opentinker-miles:latest -f docker/Dockerfile .
 #   docker push us-west1-docker.pkg.dev/devv-404803/gmi-test-repo/opentinker-miles:latest
 
-ARG BASE_IMAGE=us-west1-docker.pkg.dev/devv-404803/gmi-test-repo/miles_dev-202511120a-dev:latest
+ARG BASE_IMAGE=radixark/miles:latest
 FROM ${BASE_IMAGE}
 
 # ======================================== Arguments =============================================
@@ -38,6 +38,9 @@ RUN chmod +x /entrypoint.sh
 
 # Create data directories (will be overridden if /data is mounted)
 RUN mkdir -p /data/models /data/datasets /data/checkpoints /data/trajectories /data/metadata
+
+# Copy test dataset for RolloutManager initialization
+COPY training/test_data/gsm8k_rl.jsonl /data/datasets/gsm8k_rl.jsonl
 
 # Copy data preparation and model conversion scripts
 COPY docker/prepare_data.sh /prepare_data.sh

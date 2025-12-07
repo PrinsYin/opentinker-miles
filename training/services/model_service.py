@@ -136,7 +136,7 @@ class ModelService:
             logger.info(f"[{request_id}] Waiting for placement group to be ready (timeout=120s)")
             await asyncio.wait_for(
                 asyncio.wrap_future(pg.ready().future()),
-                timeout=120.0  # 2 minutes max wait for GPU resource allocation
+                timeout=180.0  # 2 minutes max wait for GPU resource allocation
             )
             logger.info(f"[{request_id}] Placement group ready!")
 
